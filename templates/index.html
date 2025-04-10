@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusion - Welcome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 3s ease-in-out;
+        }
+        .slide-down {
+            animation: slideDown 1s ease-in-out;
+        }
+        .slide-up {
+            animation: slideUp 1s ease-in-out;
+        }
+        .zoom-in {
+            animation: zoomIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes slideDown {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://live.staticflickr.com/4112/5222560937_6d8cfec463_z.jpg');">
+    <div class="bg-blue-900 bg-opacity-90 p-10 rounded-lg shadow-lg text-white text-center fade-in">
+        <h1 class="text-4xl font-bold mb-6 slide-down">Welcome to inclusion</h1>
+        <p class="text-lg mb-8 slide-up"> A page to break the language barriers targetted for marginalized people</p>
+        <a href="/prefer" class="inline-block px-8 py-3 bg-red-800 hover:bg-white hover:text-red-800 text-white text-lg font-semibold rounded-lg transition transform hover:scale-110 zoom-in">Explore Insights</a>
+    </div>
+</body>
+</html>

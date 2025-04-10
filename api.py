@@ -1,0 +1,2 @@
+news_api_key = "7fd31ea9291e40af9f323da289cb81e8"
+groq_api_key = "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"

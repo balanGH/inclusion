@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom Chatbot Assistant</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+        <header> <h1> Inclusion</h1> </header>
+        <a href="home">Home</a>
+        <a href="chat">Chat</a>
+        <a href="news">News</a>
+    </div>
+    <h1>AI Assistant</h1>
+    <p>
+      Hello! I can only answer questions related to government orders, local
+      news, services, articles, Rights, Opportunities, or laws.
+    </p>
+    <p>Your preferred language is: <strong>{{ preferred_language }}</strong></p>
+    <form id="chatForm">
+      <label for="question">Ask a question:</label>
+      <textarea id="question" name="question" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="chatBox"></div>
+    <script>
+      document
+        .getElementById("chatForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const question = document.getElementById("question").value;
+
+          fetch("/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ question: question }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const chatBox = document.getElementById("chatBox");
+              chatBox.innerHTML = ""; // Clear previous content
+              data.history.forEach((msg) => {
+                const p = document.createElement("p");
+                p.textContent = `You: ${msg.human}`;
+                chatBox.appendChild(p);
+                const p2 = document.createElement("p");
+                p2.textContent = `Chatbot: ${msg.AI}`;
+                chatBox.appendChild(p2);
+              });
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>
